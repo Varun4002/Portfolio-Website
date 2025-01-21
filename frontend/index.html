@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Glowing Cursor -->
+    <div class="cursor-aura"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">My Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="content">
+            <h1>Hello !!! Broskiiiii...</h1>
+            <div class="about">
+                <p>I'm <strong>Varun</strong>, a web developer passionate about crafting elegant, functional, and innovative digital experiences.</p>
+            </div>
+            <div class="skills">
+                <span class="skill">Python</span>
+                <span class="skill">FastAPI</span>
+                <span class="skill">HTML</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2>Previous Experiences</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Portfolio Website</h3>
+                <p>Bringing my skills to life with Hardwork and Dedication</p>
+                
+            </div>
+            <div class="project-card">
+              <h3>Intern at Laxhar Tech</h3>
+              <p>Excited to contribute and grow as part of the innovative team at Laxhar Tech, where I'm gaining valuable hands-on experience in cutting-edge technologies.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <h2>Contact Me</h2>
+      <form id="contactForm">
+          <input type="text" id="name" placeholder="Your Name" required>
+          <input type="email" id="email" placeholder="Your Email" required>
+          <textarea rows="5" id="message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send</button>
+      </form>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+      <p>© 2025 Varun. All rights reserved.</p>
+  </footer>
+  
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+  <script>
+      document.getElementById('contactForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const message = document.getElementById('message').value;
+          
+          const response = await fetch('http://localhost:8000/submit-form/', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ name, email, message })
+          });
+  
+          const data = await response.json();
+          alert(data.message);
+      });
+  </script>
+</body>
+</html>
